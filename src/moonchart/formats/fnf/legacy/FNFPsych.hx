@@ -67,6 +67,7 @@ class FNFPsychBasic<T:PsychJsonFormat> extends FNFLegacyBasic<T>
 	// TODO: add GF_SECTION event inputs
 	override function fromBasicFormat(chart:BasicChart, ?diff:FormatDifficulty):FNFPsychBasic<T>
 	{
+		trace('diff', diff);
 		var basic = super.fromBasicFormat(chart, diff);
 		var song = basic.data.song;
 

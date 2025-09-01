@@ -131,6 +131,7 @@ class FNFLegacyBasic<T:FNFLegacyFormat> extends BasicJsonFormat<{song:T}, Dynami
 
 	override function fromBasicFormat(chart:BasicChart, ?diff:FormatDifficulty):FNFLegacyBasic<T>
 	{
+		trace('ok', diff);
 		var chartResolve = resolveDiffsNotes(chart, diff);
 		var diff:String = chartResolve.diffs[0];
 		var basicNotes:Array<BasicNote> = chartResolve.notes.get(diff);

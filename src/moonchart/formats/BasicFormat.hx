@@ -439,8 +439,7 @@ abstract class BasicFormat<D, M>
 	// Just for util
 	public inline function resolveDiffs(?diff:FormatDifficulty):Array<String>
 	{
-		var resolve = (diff != null) ? diff.resolve() : null;
-		return (resolve != null && resolve.length > 0) ? resolve : [Moonchart.DEFAULT_DIFF];
+		return [Moonchart.DEFAULT_DIFF];
 	}
 
 	public function formatDiff(diff:String):String
@@ -547,6 +546,7 @@ abstract class BasicJsonFormat<D, M> extends BasicFormat<D, M>
 
 	override function stringify():FormatStringify
 	{
+		trace('ohhhhh daaaaaaaave', meta);
 		return {
 			data: Json.stringify(data, formatting),
 			meta: Json.stringify(meta, formatting)

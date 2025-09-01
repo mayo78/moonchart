@@ -24,6 +24,7 @@ enum abstract Format(String) from String to String
 	var FNF_CODENAME;
 	var FNF_LUDUM_DARE;
 	var FNF_VSLICE;
+	var FNF_VSDAVE;
 	var GUITAR_HERO;
 	var OSU_MANIA;
 	var QUAVER;
@@ -38,7 +39,7 @@ enum abstract Format(String) from String to String
 	public static function getList():Array<FormatData>
 	{
 		return [
-			FNFLegacy.__getFormat(), FNFPsych.__getFormat(), FNFTroll.__getFormat(), FNFFpsPlus.__getFormat(), FNFKade.__getFormat(), FNFMaru.__getFormat(),
+			FNFLegacy.__getFormat(), FNFPsych.__getFormat(), FNFTroll.__getFormat(), FNFFpsPlus.__getFormat(), FNFKade.__getFormat(), FNFVsDave.__getFormat(), FNFMaru.__getFormat(),
 			FNFCodename.__getFormat(), FNFLudumDare.__getFormat(), FNFVSlice.__getFormat(), GuitarHero.__getFormat(), OsuMania.__getFormat(),
 			Quaver.__getFormat(), StepMania.__getFormat(), StepManiaShark.__getFormat(), Midi.__getFormat()];
 	}
