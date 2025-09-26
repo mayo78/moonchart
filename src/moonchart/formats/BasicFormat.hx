@@ -421,10 +421,13 @@ abstract class BasicFormat<D, M>
 		return null;
 	}
 
+	public static var forceDiff = null;
 	public function getChartData():BasicChartData
 	{
 		var chartDiffs = new BasicChartDiffs();
 
+		if (forceDiff != null)
+			this.diffs = [forceDiff];
 		for (diff in this.diffs)
 		{
 			chartDiffs.set(diff, getNotes(diff));
@@ -546,7 +549,6 @@ abstract class BasicJsonFormat<D, M> extends BasicFormat<D, M>
 
 	override function stringify():FormatStringify
 	{
-		trace('ohhhhh daaaaaaaave', meta);
 		return {
 			data: Json.stringify(data, formatting),
 			meta: Json.stringify(meta, formatting)
