@@ -1,4 +1,4 @@
-package moonchart.formats.fnf;
+package moonchart.formats.fnf.legacy;
 
 import moonchart.backend.FormatData;
 import moonchart.backend.Timing;
@@ -32,7 +32,7 @@ class FNFVsDave extends BasicJsonFormat<FNFVsDaveFormat, FNFVsDaveMeta>
 		return {
 			ID: FNF_VSDAVE,
 			name: "FNF (Vs. Dave)",
-			description: "The format used in Vs. Dave & Bambi Volume 1",
+			description: "The format used in Vs. Dave & Bambi Volume 1. Deprecated since the mod moved to Codename Engine",
 			extension: "json",
 			hasMetaFile: TRUE,
 			handler: FNFVsDave

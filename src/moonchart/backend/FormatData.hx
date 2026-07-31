@@ -43,6 +43,7 @@ enum abstract Format(String) from String to String
 			FNFTroll.__getFormat(),
 			FNFFpsPlus.__getFormat(),
 			FNFKade.__getFormat(),
+			FNFVsDave.__getFormat(),
 			FNFMaru.__getFormat(),
 			FNFCodename.__getFormat(),
 			FNFLudumDare.__getFormat(),
