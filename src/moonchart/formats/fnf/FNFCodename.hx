@@ -201,7 +201,7 @@ class FNFCodename extends BasicJsonFormat<FNFCodenameFormat, FNFCodenameMeta>
 
 	function resolveCodenameType(type:String, list:Array<String>):Int
 	{
-		if (type.length <= 0)
+		if (type?.length <= 0)
 			return 0;
 
 		if (list.contains(type))
