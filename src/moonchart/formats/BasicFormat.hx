@@ -15,7 +15,7 @@ typedef BasicTimingObject =
 
 typedef BasicNote = BasicTimingObject &
 {
-	lane:Int8,
+	lane:Int,
 	length:Float,
 	type:String
 }
@@ -44,7 +44,7 @@ typedef BasicMeasure =
 	startTime:Float, // The measure's start time in milliseconds
 	endTime:Float, // The measure's end time in milliseconds
 	length:Float, // The measure's duration in milliseconds
-	snap:Int8 // Automatic snap for the notes inside the measure
+	snap:Int // Automatic snap for the notes inside the measure
 }
 
 typedef BasicChartDiffs = Map<String, Array<BasicNote>>;
@@ -78,7 +78,7 @@ enum abstract BasicNoteType(String) from String to String
 	var MINE;
 }
 
-enum abstract TimeFormat(Int8)
+enum abstract TimeFormat(Int)
 {
 	var MILLISECONDS;
 	var SECONDS;
@@ -353,8 +353,13 @@ abstract class BasicFormat<D, M>
 		{
 			final bytes = encode();
 			Util.saveBytes(path, bytes.data);
-			if (metaPath != null && bytes.meta != null)
-				Util.saveBytes(metaPath, bytes.meta.resolve()[0]);
+			if (metaPath != null)
+			{
+				if (bytes.meta != null)
+					Util.saveBytes(metaPath, bytes.meta.resolve()[0]);
+				else
+					trace("[WARN] Couldn't find meta to save for path: " + metaPath);
+			}
 
 			return {
 				output: bytes,
@@ -366,8 +371,13 @@ abstract class BasicFormat<D, M>
 		{
 			final string = stringify();
 			Util.saveText(path, string.data);
-			if (metaPath != null && string.meta != null)
-				Util.saveText(metaPath, string.meta.resolve()[0]);
+			if (metaPath != null)
+			{
+				if (string.meta != null)
+					Util.saveText(metaPath, string.meta.resolve()[0]);
+				else
+					trace("[WARN] Couldn't find meta to save for path: " + metaPath);
+			}
 
 			return {
 				output: string,
@@ -550,8 +560,8 @@ abstract class BasicJsonFormat<D, M> extends BasicFormat<D, M>
 	override function stringify():FormatStringify
 	{
 		return {
-			data: Json.stringify(data, formatting),
-			meta: Json.stringify(meta, formatting)
+			data: data != null ? Json.stringify(data, formatting) : null,
+			meta: meta != null ? Json.stringify(meta, formatting) : null
 		}
 	}
 
